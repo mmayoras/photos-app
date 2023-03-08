@@ -1,4 +1,4 @@
-# pictures-app
+# photos-app
 Paginated viewing gallery of publicly available images
 
 ## Build Instructions

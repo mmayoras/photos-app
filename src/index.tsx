@@ -17,9 +17,6 @@ root.render(
           WebkitFontSmoothing: 'antialiased',
           MozOsxFontSmoothing: 'grayscale',
         },
-        code: {
-          fontFamily: 'source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace',
-        },
       }}
     />
     <App />

@@ -1,35 +1,40 @@
+import { useState } from 'react';
 import styled from '@emotion/styled';
 
-const AppContainer = styled.div`
-  text-align: center;
-`;
+import Header from './components/Header/Header';
+import PhotoCard from './components/PhotoCard/PhotoCard';
+import { usePageLocalStorage } from './hooks/usePageLocalStorage';
+import { useSearchQueryLocalStorage } from './hooks/useSearchQueryLocalStorage';
+import { Photo, emptyPhoto } from './types/Photo';
 
-const AppHeader = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
+const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  background-color: #fafafa;
 `;
 
-const AppLink = styled.a`
-  color: #61dafb;
+const GalleryContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const App: React.FC = () => {
+  const [photoList, setPhotoList] = useState<Photo[]>([emptyPhoto, emptyPhoto, emptyPhoto]);
+  const [page, setPage] = usePageLocalStorage('page', 1);
+  const [searchQuery, setSearchQuery] = useSearchQueryLocalStorage('search', '');
+
+  console.log(searchQuery);
+
   return (
     <AppContainer>
-      <AppHeader>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <AppLink href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-          Learn React
-        </AppLink>
-      </AppHeader>
+      <Header inputValue={searchQuery} setInputValue={setSearchQuery} />
+      <GalleryContainer>
+        {photoList.map((_, itemIdx) => (
+          <PhotoCard key={itemIdx} />
+        ))}
+      </GalleryContainer>
     </AppContainer>
   );
 };

@@ -1,5 +1,5 @@
 {
-  "name": "test-typescript-app",
+  "name": "photos-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
