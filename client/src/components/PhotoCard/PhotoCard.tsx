@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Photo } from '../../types/Photo';
 
 const CardContainer = styled.div`
   display: flex;
@@ -15,8 +16,18 @@ const CardContainer = styled.div`
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
 `;
 
-const PhotoCard: React.FC = () => {
-  return <CardContainer>Image here</CardContainer>;
+interface PhotoCardProps {
+  photoData: Photo;
+}
+
+const PhotoCard: React.FC<PhotoCardProps> = ({ photoData }) => {
+  const { alt, src } = photoData;
+
+  return (
+    <CardContainer>
+      <img src={src.small} alt={alt} />
+    </CardContainer>
+  );
 };
 
 export default PhotoCard;

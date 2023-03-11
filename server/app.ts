@@ -1,5 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
 import { Routes } from './interfaces/routes.interface';
 
 class App {
@@ -13,6 +15,10 @@ class App {
     this.port = 3001;
  
     dotenv.config();
+
+    this.app.use(cors({ origin: '*', credentials: true }));
+
+    this.initializeRoutes(routes);
   }
 
   public listen() {
@@ -30,6 +36,12 @@ class App {
 
   public getServer() {
     return this.app;
+  }
+
+  private initializeRoutes(routes: Routes[]) {
+    routes.forEach(route => {
+      this.app.use('/', route.router);
+    });
   }
 }
 
