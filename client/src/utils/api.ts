@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse} from 'axios';
 
 export type Method = 'get' | 'post';
 
@@ -9,5 +9,5 @@ export const ApiRequest = ({ path, method, data }: { path: string; method: Metho
       method,
       data,
     })
-    .then((res) => res.data);
+    .then((res: AxiosResponse) => res.data);
 };

@@ -35,7 +35,7 @@ const App: React.FC = () => {
     <AppContainer>
       <Header inputValue={searchQuery} setInputValue={setSearchQuery} />
       <GalleryContainer>
-        {(!!data && !!data.data && !!data.data.photos && data.data.photos.length > 0) && data.data.photos.map((photo: Photo, photoIdx: number) => (
+        {(!!data && !!data.data && !!data.data.photos) && data.data.photos.map((photo: Photo, photoIdx: number) => (
           <PhotoCard key={photoIdx} photoData={photo} />
         ))}
       </GalleryContainer>
