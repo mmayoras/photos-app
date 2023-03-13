@@ -8,10 +8,13 @@ const PaginationContainer = styled.div`
   align-items: center;
 `;
 
+const PageText = styled.p`
+  font-size: 18px;
+`;
+
 const ArrowContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 32px;
 `;
 
 const LeftArrow = styled.button<{ disabled: boolean }>`
@@ -24,7 +27,7 @@ const LeftArrow = styled.button<{ disabled: boolean }>`
   -webkit-transform: rotate(135deg);
   cursor: pointer;
 
-  opacity: ${(props) => props.disabled ? '0.2' : '1'};
+  opacity: ${(props) => (props.disabled ? '0.2' : '1')};
 `;
 
 const RightArrow = styled.button<{ disabled: boolean }>`
@@ -36,7 +39,7 @@ const RightArrow = styled.button<{ disabled: boolean }>`
   -webkit-transform: rotate(-45deg);
   cursor: pointer;
 
-  opacity: ${(props) => props.disabled ? '0.2' : '1'};
+  opacity: ${(props) => (props.disabled ? '0.2' : '1')};
 `;
 
 interface PaginationProps {
@@ -65,9 +68,11 @@ const PaginationWrapper: React.FC<PropsWithChildren<PaginationProps>> = ({
 
   return (
     <PaginationContainer>
-      Page {currentPage} of {lastPage}
+      <PageText>
+        <b>{currentPage}</b> of {lastPage}
+      </PageText>
       <ArrowContainer>
-        <LeftArrow onClick={onPrevious} disabled={onFirstPage}  />
+        <LeftArrow onClick={onPrevious} disabled={onFirstPage} />
         <RightArrow onClick={onNext} disabled={onLastPage} />
       </ArrowContainer>
       {children}

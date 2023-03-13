@@ -17,6 +17,18 @@ const CardContainer = styled.div`
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+const InfoHeader = styled.h3`
+  font-size: 16px;
+  margin: 0 5px 0 0;
+`;
+
 interface PhotoCardProps {
   photoData: Photo;
 }
@@ -27,8 +39,13 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ photoData }) => {
   return (
     <CardContainer>
       <img src={src.small} alt={alt} />
-      <label>{photographer}</label>
-      <label>{photographer_url}</label>
+      <InfoContainer>
+        <InfoHeader>Captured by: </InfoHeader>
+        <label>{photographer}</label>
+      </InfoContainer>
+      <a href={photographer_url} target='_blank' rel='noopener noreferrer'>
+        Profile
+      </a>
     </CardContainer>
   );
 };

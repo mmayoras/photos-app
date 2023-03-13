@@ -4,7 +4,7 @@ import Header from './Header';
 import { SUBHEADER_TEXT } from '../../constants/appConstants';
 
 test('renders header subheading', () => {
-  render(<Header inputValue={''} setInputValue={jest.fn()} />);
+  render(<Header inputValue={''} setInputValue={jest.fn()} submit={jest.fn()} clear={jest.fn()} />);
 
   const subheaderElement = screen.getByText(SUBHEADER_TEXT);
 

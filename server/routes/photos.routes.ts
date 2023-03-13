@@ -15,7 +15,7 @@ class PhotosRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}/curated`, this.photosController.getCuratedPhotos);
-    // this.router.post(`${this.path}`, validationMiddleware(CreateUserDto, 'body'), this.usersController.createUser);
+    this.router.get(`${this.path}/search`, this.photosController.getSearchedPhotos);
   }
 }
 
