@@ -72,5 +72,5 @@ It correctly bundles React in production mode and optimizes the build for the be
 ## Nice-to-haves (things I would've done with more time)
 1. Added proper testing
     - I've added test suites where applicable, but only a sample render unit test for each which I would never do before deploying to a production env.
-    - I would've liked to add Storybook with more time. This library is great for documenting react components and I really enjoy setting up my unit tests to run against stories vs. actual components
-    - I know this project is focused on the FE implementation mainly, but I would've liked to add some better API documentation (Swagger) and type validations (class-validator)
+2. I would've liked to add Storybook with more time. This library is great for documenting react components and I really enjoy setting up my unit tests to run against stories vs. actual components
+3. I know this project is focused on the FE implementation mainly, but I would've liked to add some better API documentation (Swagger) and type validations (class-validator)
