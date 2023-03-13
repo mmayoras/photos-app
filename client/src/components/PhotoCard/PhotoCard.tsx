@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Photo } from '../../../../types/Photo';
+import { Photo } from '../../../types/Photo';
 
 const CardContainer = styled.div`
   display: flex;
@@ -22,11 +22,17 @@ const InfoContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  font-size: 16px;
 `;
 
-const InfoHeader = styled.h3`
+const InfoHeader = styled.p`
   font-size: 16px;
   margin: 0 5px 0 0;
+`;
+
+const InfoText = styled.h3`
+  font-size: 16px;
+  margin: 0;
 `;
 
 interface PhotoCardProps {
@@ -41,7 +47,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ photoData }) => {
       <img src={src.small} alt={alt} />
       <InfoContainer>
         <InfoHeader>Captured by: </InfoHeader>
-        <label>{photographer}</label>
+        <InfoText>{photographer}</InfoText>
       </InfoContainer>
       <a href={photographer_url} target='_blank' rel='noopener noreferrer'>
         Profile

@@ -8,7 +8,7 @@ import PhotoCard from '../../components/PhotoCard/PhotoCard';
 import { usePageLocalStorage } from '../../hooks/usePageLocalStorage';
 import { useSearchQueryLocalStorage } from '../../hooks/useSearchQueryLocalStorage';
 import { ApiRequest } from '../../utils/api';
-import { Photo } from '../../../../types/Photo';
+import { Photo, PhotoResponse } from '../../../types/Photo';
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -26,14 +26,14 @@ const CuratedPhotosListPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useSearchQueryLocalStorage('search', '');
   const [isSearching, setIsSearching] = useState<boolean>(searchQuery.trim() !== '');
 
-  const { data: curatedData, isLoading: isCuratedLoading } = useQuery({
+  const { data: curatedData, isLoading: isCuratedLoading } = useQuery<PhotoResponse>({
     queryKey: ['curatedphotos', curatedPage],
     queryFn: () => ApiRequest({ path: `photos/curated?page=${curatedPage}`, method: 'get' }),
     keepPreviousData: true,
     enabled: !isSearching,
   });
 
-  const { data: searchData, isLoading: isSearchLoading } = useQuery({
+  const { data: searchData, isLoading: isSearchLoading } = useQuery<PhotoResponse>({
     queryKey: ['searchPhotos', searchPage, searchQuery],
     queryFn: () =>
       ApiRequest({ path: `photos/search?page=${searchPage}&query=${searchQuery}`, method: 'get' }),
@@ -84,9 +84,11 @@ const CuratedPhotosListPage: React.FC = () => {
     setIsSearching(false);
   };
 
-  const currentPage = isSearching ? searchPage : curatedPage;
-  const currentTotalCount = isSearching ? totalSearchCount : totalPhotoCount;
-  const currentPageChange = isSearching ? setSearchPage : setCuratedPage;
+  const currentPage: number = isSearching ? searchPage : curatedPage;
+  const currentTotalCount: number = isSearching ? totalSearchCount : totalPhotoCount;
+  const currentPageChange: (nextPage: number) => void = isSearching
+    ? setSearchPage
+    : setCuratedPage;
 
   return (
     <>

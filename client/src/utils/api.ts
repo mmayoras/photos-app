@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
+import { PhotoResponse } from '../../types/Photo';
+
 export type Method = 'get' | 'post';
 
 export const ApiRequest = ({
@@ -10,7 +12,7 @@ export const ApiRequest = ({
   path: string;
   method: Method;
   data?: object;
-}) => {
+}): Promise<PhotoResponse> => {
   return axios
     .request({
       url: `http://localhost:3001/${path}`,

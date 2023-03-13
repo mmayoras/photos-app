@@ -11,7 +11,7 @@ const AppContainer = styled.div`
   background-color: #fafafa;
 `;
 
-const queryClient = new QueryClient({
+const queryClient: QueryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
