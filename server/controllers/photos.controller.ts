@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import axios, { AxiosRequestConfig } from 'axios';
 
-import { Photo } from '../../types/Photo';
+import { PEXELS_API_ENDPOINT, PEXELS_API_KEY } from '../config';
 
 class PhotosController {
   public getCuratedPhotos = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    let curatedUrl = 'https://api.pexels.com/v1/curated?per_page=10';
+    let curatedUrl = `${PEXELS_API_ENDPOINT}/curated?per_page=10`;
     const { query } = req;
     
     if (query.hasOwnProperty('page')) {
@@ -18,7 +18,7 @@ class PhotosController {
             url: curatedUrl,
             headers: {
                 "Content-Type": 'application/json',
-                Authorization: '9NckufiyswYyeD0Tg843rEfhBjSWPiStiDcCcdkTxHvERyZqiwzvXDT9',
+                Authorization: PEXELS_API_KEY,
             },
         };
         
@@ -35,7 +35,7 @@ class PhotosController {
   };
 
   public getSearchedPhotos = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    let searchUrl = 'https://api.pexels.com/v1/search?per_page=10';
+    let searchUrl = `${PEXELS_API_ENDPOINT}/search?per_page=10`;
     const { query } = req;
     
     if (query.hasOwnProperty('page')) {
@@ -52,7 +52,7 @@ class PhotosController {
             url: searchUrl,
             headers: {
                 "Content-Type": 'application/json',
-                Authorization: '9NckufiyswYyeD0Tg843rEfhBjSWPiStiDcCcdkTxHvERyZqiwzvXDT9',
+                Authorization: PEXELS_API_KEY,
             },
         };
         

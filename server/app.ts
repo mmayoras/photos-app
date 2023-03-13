@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 
+import { ORIGIN, CREDENTIALS } from './config';
 import { Routes } from './interfaces/routes.interface';
 
 class App {
@@ -13,10 +13,8 @@ class App {
     this.app = express();
     this.env = 'development';
     this.port = 3001;
- 
-    dotenv.config();
 
-    this.app.use(cors({ origin: '*', credentials: true }));
+    this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
 
     this.initializeRoutes(routes);
   }
@@ -29,7 +27,7 @@ class App {
       console.log(`=================================`);
     });
 
-    this.app.get('/', (req: Request, res: Response) => {
+    this.app.get('/', (_: Request, res: Response) => {
       res.send('Express + TypeScript Server.');
     });
   }

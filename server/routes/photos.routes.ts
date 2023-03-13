@@ -2,7 +2,6 @@ import { Router } from 'express';
 
 import PhotosController from '../controllers/photos.controller';
 import { Routes } from '../interfaces/routes.interface';
-import { Photo } from '../../types/Photo';
 
 class PhotosRoute implements Routes {
   public path = '/photos';

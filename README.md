@@ -1,15 +1,26 @@
 # photos-app
 Paginated viewing gallery of publicly available images.
 
-## Getting started
+## Overview
 The client and server projects are broken into separate folders `client` and `server`.
-- Inside of `client` you'll find a basic react app created through create-react-app.
-- Inside of `server` you'll find a basic express/node server.
 
-## Installing dependencies
-First, in order to run locally you'll need to install depencies in both the root directory and `client`
-- `yarn install` (root)
-- `yarn install` (/client)
+### Webapp (/client)
+- This is a basic react app created through create-react-app.
+- `client` has linting (eslint) and formatting (prettier) setup
+    - See `client`-specific build instructions below for how to run
+
+### API (/server)
+Inside of `server` you'll find an Express server.
+
+## Getting started
+1. In order to run locally you'll need to install depencies in both the root directory and `client`
+- `yarn install` (root), then `yarn install` (/client)
+2. Create an .env file inside of the /server directory and fill with the following:
+PEXELS_API_KEY="{YOUR_PERSONAL_API_KEY_HERE}"
+PEXELS_API_ENDPOINT="https://api.pexels.com/v1"
+ORIGIN = *
+CREDENTIALS = true
+
 
 ## Project build instructions
 For running the full project (client + server) from the root directory:
@@ -32,7 +43,7 @@ For running the full project (client + server) from the root directory:
 - Compiles typescript server code inside /dist output folder
 
 ## Client build instructions
-For running the client separately without the server code (from inside /client):
+For running the client separately without the server code from /client directory:
 
 ### `yarn start`
 - Runs the app in the development mode.\
@@ -48,3 +59,12 @@ For running the client separately without the server code (from inside /client):
 It correctly bundles React in production mode and optimizes the build for the best performance.
 - The build is minified and the filenames include the hashes.\
 - Your app is ready to be deployed!
+
+### `yarn lint`
+- Uses eslint rules (configured in /client/.eslintrc.json) to return linting errors/warnings in the console
+
+### `yarn lint:fix`
+- Uses eslint rules (configured in /client/.eslintrc.json) to return and fix linting errors/warnings in the console
+
+### `yarn format`
+- Uses prettier rules (configured in /client/.prettierrc) to format all client .ts files
