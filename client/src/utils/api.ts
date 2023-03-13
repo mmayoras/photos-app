@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-import { PhotoResponse } from '../../types/Photo';
+import { PhotoResponse } from '../types/Photo';
 
 export type Method = 'get' | 'post';
 

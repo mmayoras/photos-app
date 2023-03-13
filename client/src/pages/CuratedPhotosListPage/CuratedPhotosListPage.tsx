@@ -8,7 +8,7 @@ import PhotoCard from '../../components/PhotoCard/PhotoCard';
 import { usePageLocalStorage } from '../../hooks/usePageLocalStorage';
 import { useSearchQueryLocalStorage } from '../../hooks/useSearchQueryLocalStorage';
 import { ApiRequest } from '../../utils/api';
-import { Photo, PhotoResponse } from '../../../types/Photo';
+import { Photo, PhotoResponse } from '../../types/Photo';
 
 const GalleryContainer = styled.div`
   display: flex;

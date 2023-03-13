@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
 import PhotoCard from './PhotoCard';
-import { emptyPhoto } from '../../../types/Photo';
+import { emptyPhoto } from '../../types/Photo';
 
 test('renders photo card with text', () => {
   render(<PhotoCard photoData={emptyPhoto} />);

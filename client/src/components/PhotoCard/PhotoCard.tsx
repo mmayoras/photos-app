@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { Photo } from '../../../types/Photo';
+import { Photo } from '../../types/Photo';
 
 const CardContainer = styled.div`
   display: flex;
