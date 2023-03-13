@@ -1,14 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
 import axios, { AxiosRequestConfig } from 'axios';
 
-import { PhotoResourceDto } from '../dtos/photos.dto';
+import { Photo } from '../../types/Photo';
 
 class PhotosController {
   public getCuratedPhotos = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    let pexelsUrl = 'https://api.pexels.com/v1/curated?per_page=10';
+    const { query } = req;
+    
+    if (query.hasOwnProperty('page')) {
+      pexelsUrl += `&page=${query['page']}`
+    }
+    
+    console.log(pexelsUrl);
     try {
         const options: AxiosRequestConfig = {
             method: 'GET',
-            url: 'https://api.pexels.com/v1/curated',
+            url: pexelsUrl,
             headers: {
                 "Content-Type": 'application/json',
                 Authorization: '9NckufiyswYyeD0Tg843rEfhBjSWPiStiDcCcdkTxHvERyZqiwzvXDT9',

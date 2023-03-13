@@ -30,7 +30,7 @@ class App {
     });
 
     this.app.get('/', (req: Request, res: Response) => {
-      res.send('Express + TypeScript Server. Marques here, wad up?');
+      res.send('Express + TypeScript Server.');
     });
   }
 
