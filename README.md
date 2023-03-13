@@ -12,10 +12,11 @@ First, in order to run locally you'll need to install depencies in both the root
 - `yarn install` (/client)
 
 ## Project build instructions
-If you'd like to to run the full project (client + server) from the root directory, you can run:
+For running the full project (client + server) from the root directory:
 
-### `yarn build`
-- Compiles typescript server code inside /dist output folder
+### `yarn dev`
+- Concurrently runs `yarn server` and `yarn client` below.
+- The server code will compile and start up followed by [http://localhost:3001](http://localhost:3001) being opened up automatically in your browser.
 
 ### `yarn server`
 - Concurrently compiles typescript server code in watch mode and starts express server
@@ -27,13 +28,11 @@ If you'd like to to run the full project (client + server) from the root directo
 - Runs client react app (same as running `yarn start` from inside /client folder).
 - See "Client build instructions" below for more info.
 
-### `yarn dev`
-- Concurrently runs `yarn server` and `yarn client` above.
-- The server code will compile and start up followed by [http://localhost:3001](http://localhost:3001) being opened up automatically in your browser.
-
+### `yarn build`
+- Compiles typescript server code inside /dist output folder
 
 ## Client build instructions
-If you'd like to run the client separately without the server code you can run the following:
+For running the client separately without the server code (from inside /client):
 
 ### `yarn start`
 - Runs the app in the development mode.\
