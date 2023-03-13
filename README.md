@@ -16,11 +16,10 @@ Inside of `server` you'll find an Express server.
 1. In order to run locally you'll need to install depencies in both the root directory and `client`
 - `yarn install` (root), then `yarn install` (/client)
 2. Create an .env file inside of the /server directory and fill with the following:
-PEXELS_API_KEY="{YOUR_PERSONAL_API_KEY_HERE}"
-PEXELS_API_ENDPOINT="https://api.pexels.com/v1"
-ORIGIN = *
-CREDENTIALS = true
-
+- `PEXELS_API_KEY="{YOUR_PERSONAL_API_KEY_HERE}"`
+- `PEXELS_API_ENDPOINT="https://api.pexels.com/v1"`
+- `ORIGIN = *`
+- `CREDENTIALS = true`
 
 ## Project build instructions
 For running the full project (client + server) from the root directory:
