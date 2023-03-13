@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "server": "concurrently \"npx tsc --watch\" \"nodemon --quiet dist/server/index.js\"",
+    "server": "concurrently \"npx tsc --watch\" \"nodemon --quiet dist/index.js\"",
     "client": "npm start --prefix client",
     "dev": "concurrently \"yarn server\" \"yarn client\""
   },
