@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { headerText, subHeaderText } from '../../constants/appConstants';
+import { HEADER_TEXT, SUBHEADER_TEXT } from '../../constants/appConstants';
 
 const AppHeader = styled.header`
   display: flex;
@@ -26,7 +26,14 @@ const SubHeaderText = styled.p`
 
 const SearchInputContainer = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const SearchTextInput = styled.input`
+  padding: 8px;
+  font-size: 16px;
+  min-width: 275px;
 `;
 
 interface HeaderProps {
@@ -38,16 +45,16 @@ const Header: React.FC<HeaderProps> = ({ inputValue, setInputValue }) => {
   return (
     <AppHeader>
       <HeaderTextContainer>
-        <HeaderText>{headerText}</HeaderText>
-        <SubHeaderText>{subHeaderText}</SubHeaderText>
+        <HeaderText>{HEADER_TEXT}</HeaderText>
+        <SubHeaderText>{SUBHEADER_TEXT}</SubHeaderText>
       </HeaderTextContainer>
       <SearchInputContainer>
-        <label htmlFor='searchQuery'>Looking for something specific?</label>
-        <input
+        <SearchTextInput
           type='text'
           name='searchQuery'
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
+          placeholder='Search for something specific...'
         />
       </SearchInputContainer>
     </AppHeader>

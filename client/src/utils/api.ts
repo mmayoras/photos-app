@@ -1,8 +1,16 @@
-import axios, { AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 export type Method = 'get' | 'post';
 
-export const ApiRequest = ({ path, method, data }: { path: string; method: Method; data?: object }) => {
+export const ApiRequest = ({
+  path,
+  method,
+  data,
+}: {
+  path: string;
+  method: Method;
+  data?: object;
+}) => {
   return axios
     .request({
       url: `http://localhost:3001/${path}`,

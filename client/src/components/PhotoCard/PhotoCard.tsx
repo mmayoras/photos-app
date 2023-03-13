@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Photo } from '../../types/Photo';
+
+import { Photo } from '../../../../types/Photo';
 
 const CardContainer = styled.div`
   display: flex;
@@ -21,11 +22,13 @@ interface PhotoCardProps {
 }
 
 const PhotoCard: React.FC<PhotoCardProps> = ({ photoData }) => {
-  const { alt, src } = photoData;
+  const { alt, src, photographer, photographer_url } = photoData;
 
   return (
     <CardContainer>
       <img src={src.small} alt={alt} />
+      <label>{photographer}</label>
+      <label>{photographer_url}</label>
     </CardContainer>
   );
 };

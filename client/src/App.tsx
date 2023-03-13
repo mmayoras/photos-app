@@ -1,13 +1,7 @@
-import { useState } from 'react';
 import styled from '@emotion/styled';
-import { useQuery } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import Header from './components/Header/Header';
-import PhotoCard from './components/PhotoCard/PhotoCard';
-import { usePageLocalStorage } from './hooks/usePageLocalStorage';
-import { useSearchQueryLocalStorage } from './hooks/useSearchQueryLocalStorage';
-import { Photo } from './types/Photo';
-import { ApiRequest } from './utils/api';
+import CuratedPhotosListPage from './pages/CuratedPhotosListPage/CuratedPhotosListPage';
 
 const AppContainer = styled.div`
   display: flex;
@@ -17,29 +11,21 @@ const AppContainer = styled.div`
   background-color: #fafafa;
 `;
 
-const GalleryContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const getCuratedPhotos = () => {
-  return ApiRequest({ path: 'photos/curated', method: 'get' });
-}
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App: React.FC = () => {
-  const { data, isLoading } = useQuery({ queryKey: ['curatedphotos'], queryFn: getCuratedPhotos });
-  const [page, setPage] = usePageLocalStorage('page', 1);
-  const [searchQuery, setSearchQuery] = useSearchQueryLocalStorage('search', '');
-
   return (
-    <AppContainer>
-      <Header inputValue={searchQuery} setInputValue={setSearchQuery} />
-      <GalleryContainer>
-        {(!!data && !!data.data && !!data.data.photos) && data.data.photos.map((photo: Photo, photoIdx: number) => (
-          <PhotoCard key={photoIdx} photoData={photo} />
-        ))}
-      </GalleryContainer>
-    </AppContainer>
+    <QueryClientProvider client={queryClient}>
+      <AppContainer>
+        <CuratedPhotosListPage />
+      </AppContainer>
+    </QueryClientProvider>
   );
 };
 
