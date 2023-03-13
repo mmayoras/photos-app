@@ -58,7 +58,6 @@ class PhotosController {
         
         const result = await axios(options);
 
-        console.log(result.status);
         if (result.status === 200 && result.data) {
             res.status(200).json({ data: result.data, message: 'searchPhotos' });
         } else {

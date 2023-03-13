@@ -25,6 +25,7 @@ Inside of `server` you'll find an Express server.
 For running the full project (client + server) from the root directory:
 
 ### `yarn dev`
+- Starts API and Webapp concurrently and is all that's needed to run the full application locally (assumming depencies & .env has already been setup).
 - Concurrently runs `yarn server` and `yarn client` below.
 - The server code will compile and start up followed by [http://localhost:3001](http://localhost:3001) being opened up automatically in your browser.
 
